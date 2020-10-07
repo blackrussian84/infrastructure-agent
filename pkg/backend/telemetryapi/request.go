@@ -84,7 +84,7 @@ func createRequest(ctx context.Context, rawJSON json.RawMessage, apiKey string, 
 	}
 	compressedLen := compressed.Len()
 
-	reqHTTP, err := http.NewRequest("POST", url, compressed)
+	reqHTTP, err := http.NewRequestWithContext(ctx, "POST", url, compressed)
 	if nil != err {
 		return req, fmt.Errorf("error creating request: %v", err)
 	}
